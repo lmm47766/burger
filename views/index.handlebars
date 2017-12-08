@@ -17,6 +17,7 @@
         {{/each}}
       </div>  
       <div class="col-xl-6 devoured">
+        <button id="delete" type="submit">Clear All</button>
         {{#each devoured}}
             <p>
               {{this.id}}. {{this.burger_name}}
@@ -40,7 +41,7 @@
 </div>
 
 <script type="text/javascript">
-
+  //Add button
   $("#addBurger").on("click", function(event) {
     event.preventDefault();
     var newBurger = {
@@ -53,6 +54,7 @@
 
   });
 
+  //Update button
   $(".updateDev").on("click", function(event) {
     var id = $(this).data("burgerid");
 
@@ -66,5 +68,18 @@
     );
   });
 
+  //Delete button
+  $("#delete").on("click", function(event) {
+    // var id = $(this).data("burgerid");
+
+    $.ajax("/delete", {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleting all ");
+        location.reload();
+      }
+    );
+  });
 
 </script>

@@ -5,7 +5,7 @@ var burger = {
 	selectAll: function(callback) {
 		orm.selectAll("burgers", function(res){
 			callback(res);
-		})
+		});
 
 	},
 
@@ -19,8 +19,13 @@ var burger = {
 		orm.updateOne('burgers', true, burgerId, function(res){
 			callback(res);
 		});
-	}
+	},
 
+	deleteAll: function(callback) {
+		orm.deleteAll('burgers', 'devoured', true, function(res) {
+			callback(res);
+		});
+	}
 
 };
 

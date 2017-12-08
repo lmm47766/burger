@@ -29,7 +29,6 @@ router.post("/todos", function(req, res) {
 
 });
 
-
 router.put("/update/:id", function(req, res) {
 	burger.updateOne(req.params.id, function(result) {
 	    // res.json({ id: result.insertId });
@@ -37,7 +36,11 @@ router.put("/update/:id", function(req, res) {
   	});
 });
 
-
+router.delete("/delete", function(req, res) {
+	burger.deleteAll(function(result) {
+	  	res.end();
+  	});
+});
 
 module.exports = router;
 

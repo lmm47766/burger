@@ -30,7 +30,15 @@ var orm = {
 			callback(result);
 			// selectAll();
 		});
+	},
+	deleteAll: function(table, col, colCondition,callback) {
+		var queryString = "DELETE FROM ?? where ?? = ?";
+		connection.query(queryString, [table, col, colCondition], function(err, result) {
+			callback(result);
+			// selectAll();
+		});
 	}
+
 }
 
 
